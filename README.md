@@ -33,31 +33,10 @@ Before building the APK, ensure you have the following installed:
 
 # Installation
 Clone the repository:
-
-`` bash
-git clone 
-cd breethly
-Install dependencies:
-``
-`` bash
-npm install
-Start the development server:
-``
-`` bash
-npx expo start
-Run on your device:
-``
-
-Install the Expo Go app on your Android phone
-Scan the QR code displayed in the terminal
-The app will load on your device
-
-Clone the repository:
-
 ```bash
 git clone https://github.com/bethwel3001/breethly
 cd breethly
-
+```
 Install dependencies:
 
 ```bash
