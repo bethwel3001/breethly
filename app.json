@@ -4,26 +4,49 @@
     "slug": "breethly-mvp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon/icon.png",
     "userInterfaceStyle": "light",
-    "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/splash/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#2C3E70"
     },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/icon/adaptive-icon.png",
+        "backgroundColor": "#2C3E70"
       },
-      "edgeToEdgeEnabled": true
+      "package": "com.bethwel.breethly",
+      "splash": {
+        "mdpi": "./assets/splash/splash.png",
+        "hdpi": "./assets/splash/splash.png",
+        "xhdpi": "./assets/splash/splash.png",
+        "xxhdpi": "./assets/splash/splash.png",
+        "xxxhdpi": "./assets/splash/splash.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#2C3E70"
+      }
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    "scheme": "breethly",
+    "plugins": [
+      "expo-router"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "18752530-149b-49d5-a4c5-e04c00b9c9c5"
+      }
     }
   }
 }
