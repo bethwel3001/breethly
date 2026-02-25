@@ -8,11 +8,13 @@ import { useBreathingTimer } from '../hooks/useBreathingTimer';
 import { useSound } from '../hooks/useSound';
 import { EXERCISES } from '../constants/exercises';
 import BreathingCircle from '../components/BreathingCircle';
+import { useStats } from '../hooks/useStats';
 
 export default function ExerciseScreen() {
   const router = useRouter();
   const exercise = EXERCISES[0];
-  
+  const { addSession } = useStats();
+
   const {
     currentPhase,
     timeLeft,
@@ -32,6 +34,15 @@ export default function ExerciseScreen() {
       stopSound();
     }
   }, [isRunning]);
+
+  useEffect(() => {
+  if (!isRunning && timeLeft === 0) {
+    // Session completed
+    const totalSeconds = exercise.durations.reduce((a, b) => a + b, 0) * 
+      (exercise.phases.length / exercise.durations.length);
+    addSession(totalSeconds, exercise.name);
+  }
+}, [isRunning, timeLeft]);
 
   useEffect(() => {
     return () => {

@@ -4,19 +4,47 @@ import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { EXERCISES } from '../constants/exercises';
+import { useStats } from '../hooks/useStats';
 
 export default function HomeScreen() {
   const router = useRouter();
+  const { currentStreak } = useStats();
 
   return (
     <SafeAreaView style={styles.safeContainer} edges={['top', 'left', 'right']}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.title}>Breethly</Text>
-          <TouchableOpacity onPress={() => router.push('/settings')}>
-            <Ionicons name="settings-outline" size={28} color="#2C3E70" />
-          </TouchableOpacity>
+          <View>
+            <Text style={styles.title}>Breathly:</Text>
+            <View style={styles.streakBadge}>
+              <Ionicons name="flame" size={16} color="#FF9F7C" />
+              <Text style={styles.streakText}>{currentStreak} day streak</Text>
+            </View>
+          </View>
+          <View style={styles.headerIcons}>
+            <TouchableOpacity 
+              onPress={() => router.push('/stats')}
+              style={styles.iconButton}
+            >
+              <Ionicons name="stats-chart" size={24} color="#2C3E70" />
+            </TouchableOpacity>
+            <TouchableOpacity 
+              onPress={() => router.push('/settings')}
+              style={styles.iconButton}
+            >
+              <Ionicons name="settings-outline" size={24} color="#2C3E70" />
+            </TouchableOpacity>
+          </View>
         </View>
+
+        {/* Emergency Button */}
+        <TouchableOpacity 
+          style={styles.emergencyButton}
+          onPress={() => router.push('/emergency')}
+        >
+          <Ionicons name="heart" size={24} color="#fff" />
+          <Text style={styles.emergencyText}>Need a moment?</Text>
+        </TouchableOpacity>
         
         <Text style={styles.subtitle}>Choose an exercise</Text>
         
@@ -50,18 +78,50 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 8,
+    alignItems: 'flex-start',
+    marginBottom: 16,
   },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
     color: '#2C3E70',
   },
+  streakBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 4,
+    gap: 4,
+  },
+  streakText: {
+    fontSize: 14,
+    color: '#666',
+  },
+  headerIcons: {
+    flexDirection: 'row',
+    gap: 16,
+  },
+  iconButton: {
+    padding: 4,
+  },
+  emergencyButton: {
+    backgroundColor: '#FF9F7C',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 12,
+    padding: 16,
+    borderRadius: 12,
+    marginBottom: 24,
+  },
+  emergencyText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '600',
+  },
   subtitle: {
     fontSize: 16,
     color: '#666',
-    marginBottom: 24,
+    marginBottom: 16,
   },
   card: {
     padding: 20,

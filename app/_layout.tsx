@@ -3,21 +3,22 @@ import { StatusBar } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { SplashScreenProvider, useSplashScreen } from '../contexts/SplashScreenContext';
 
-// This component handles showing/hiding the splash screen
 function RootLayoutContent() {
   const { isReady } = useSplashScreen();
 
   if (!isReady) {
-    return null; // Splash screen is still visible
+    return null;
   }
 
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="exercise" options={{ headerShown: false }} />
-        <Stack.Screen name="settings" options={{ headerShown: false }} />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" />
+        <Stack.Screen name="exercise" />
+        <Stack.Screen name="settings" />
+        <Stack.Screen name="stats" />
+        <Stack.Screen name="emergency" />
       </Stack>
     </>
   );

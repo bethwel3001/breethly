@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "breethly-mvp",
-    "slug": "breethly-mvp",
+    "name": "Breathly:",
+    "slug": "breethly",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon/icon.png",
@@ -15,14 +15,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.bethwelkiplagat.breethly"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon/adaptive-icon.png",
         "backgroundColor": "#2C3E70"
       },
-      "package": "com.bethwel.breethly",
+      "package": "com.bethwelkiplagat.breethly",
       "splash": {
         "mdpi": "./assets/splash/splash.png",
         "hdpi": "./assets/splash/splash.png",
@@ -35,7 +36,9 @@
     },
     "scheme": "breethly",
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-font",
+      "expo-audio"
     ],
     "experiments": {
       "typedRoutes": true

@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Switch } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Switch, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { SOUNDS } from '../constants/sounds';
 import { useSound } from '../hooks/useSound';
 import SoundPicker from '../components/SoundPicker';
+import DeveloperFooter from '../components/DeveloperFooter';
 
 export default function SettingsScreen() {
   const router = useRouter();
@@ -18,16 +19,20 @@ export default function SettingsScreen() {
 
   return (
     <SafeAreaView style={styles.safeContainer} edges={['top', 'left', 'right']}>
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <TouchableOpacity onPress={() => router.back()}>
-            <Ionicons name="arrow-back" size={28} color="#2C3E70" />
-          </TouchableOpacity>
-          <Text style={styles.title}>Settings</Text>
-          <View style={{ width: 28 }} />
-        </View>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+          <Ionicons name="arrow-back" size={24} color="#2C3E70" />
+        </TouchableOpacity>
+        <Text style={styles.title}>Settings</Text>
+        <View style={{ width: 24 }} />
+      </View>
 
-        <View style={styles.content}>
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+        {/* App Settings Section */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>App Settings</Text>
+          
+          {/* Sound Settings */}
           <View style={styles.settingItem}>
             <View style={styles.settingLeft}>
               <Ionicons name="volume-high" size={24} color="#2C3E70" />
@@ -52,25 +57,32 @@ export default function SettingsScreen() {
             </View>
           )}
 
-          <View style={styles.divider} />
-
+          {/* Dark Mode (Coming Soon) */}
           <View style={styles.settingItem}>
             <View style={styles.settingLeft}>
               <Ionicons name="moon" size={24} color="#2C3E70" />
               <Text style={styles.settingLabel}>Dark Mode</Text>
             </View>
-            <Text style={styles.comingSoon}>Coming Soon</Text>
+            <View style={styles.comingSoonBadge}>
+              <Text style={styles.comingSoonText}>Soon</Text>
+            </View>
           </View>
 
+          {/* Haptic Feedback (Coming Soon) */}
           <View style={styles.settingItem}>
             <View style={styles.settingLeft}>
               <Ionicons name="heart" size={24} color="#2C3E70" />
               <Text style={styles.settingLabel}>Haptic Feedback</Text>
             </View>
-            <Text style={styles.comingSoon}>Coming Soon</Text>
+            <View style={styles.comingSoonBadge}>
+              <Text style={styles.comingSoonText}>Soon</Text>
+            </View>
           </View>
         </View>
-      </View>
+
+        {/* Developer Footer - Now clearly separate */}
+        <DeveloperFooter />
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -80,55 +92,71 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  container: {
-    flex: 1,
-  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 20,
-    paddingBottom: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f0f0f0',
+  },
+  backButton: {
+    padding: 4,
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '600',
     color: '#2C3E70',
   },
-  content: {
-    padding: 20,
+  container: {
+    flex: 1,
+  },
+  section: {
+    padding: 16,
+  },
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#2C3E70',
+    marginBottom: 16,
   },
   settingItem: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 15,
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#f0f0f0',
   },
   settingLeft: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 15,
+    gap: 12,
   },
   settingLabel: {
     fontSize: 16,
     color: '#333',
   },
-  comingSoon: {
+  comingSoonBadge: {
+    backgroundColor: '#f0f0f0',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  comingSoonText: {
     color: '#999',
-    fontSize: 14,
+    fontSize: 12,
+    fontWeight: '500',
   },
   soundPickerContainer: {
-    marginTop: 10,
-    marginLeft: 39,
+    marginTop: 12,
+    marginLeft: 36,
+    marginBottom: 12,
   },
   pickerLabel: {
     fontSize: 14,
     color: '#666',
-    marginBottom: 10,
-  },
-  divider: {
-    height: 1,
-    backgroundColor: '#f0f0f0',
-    marginVertical: 20,
+    marginBottom: 8,
   },
 });
