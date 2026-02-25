@@ -52,6 +52,30 @@ Install the Expo Go app on your Android phone
 Scan the QR code displayed in the terminal
 The app will load on your device
 
+Clone the repository:
+
+```bash
+git clone https://github.com/bethwel3001/breethly
+cd breethly
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npx expo start
+```
+
+Run on your device:
+
+1. Install the Expo Go app on your Android phone
+2. Scan the QR code displayed in the terminal
+3. The app will load on your device
+
 # What I Learnt
 Building this first mobile app taught me:
 
