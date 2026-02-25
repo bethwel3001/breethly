@@ -68,13 +68,13 @@ Building this first mobile app taught me:
 - The importance of safe area handling for different device notches
 
 # Future Improvements
-- As I continue learning, I plan to add:
-- Progress tracking and session history
-- More breathing exercise patterns
-- Customizable animation speeds
-- Dark mode support
-- Haptic feedback
-- Guided breathing tutorials for beginners
+As I continue learning, I plan to add:
+  - Progress tracking and session history
+  - More breathing exercise patterns
+  - Customizable animation speeds
+  - Dark mode support
+  - Haptic feedback
+  - Guided breathing tutorials for beginners
 
 # Acknowledgments
 This project was built while learning React Native development. Special thanks to the Expo and React Native communities for their excellent documentation and tools that made this first mobile app possible.
